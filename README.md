@@ -2,6 +2,7 @@
 Concertar código da série de fibonacci bugado utilizando o gdb
 
 usado para compilar: g++ -std=c++11 fib_series_bugged.cpp -o fib
+
 usando o gdb: g++ -std=c++11 -g fib_series_bugged.cpp  -o fib
 
 1° execução = Ao digitar o limite para a série Fibonnaci, independente da entrada, a saida são infinitos '0'.
