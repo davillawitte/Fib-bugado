@@ -33,7 +33,23 @@ Foi alterada a variavel count para que ela retornasse corretamente a serie até 
 
 Troca dos tipos de variáveis da serie para long long, pois quando se utilizava numeros grandes eles não eram mostrados pois o tipo anterior era int e não suportava.
 
+Criação do vetor alocado dinamicamente.
+
 =======================================================================
 
-3º execução = 
+3º execução = no GDB, ao executar o programa, é possivel notar que os primeiros valores da série estão corretos, porém quando os numeros ficam muito grandes ocorre um problema e é mostrado o seguinte erro: 
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000555555554c2f in fib (_limit=2147483647, 
+    _A=@0x7fffffffde60: 0x555555769690) at fib_series_bugged.cpp:54
+warning: Source file is more recent than executable.
+54	            _A[count] = fib2;
+
+=========3ª ALTERACAO=========
+Após muito pesquisar, encontrei que o tipo de variável unsigned long suportava os números gigantes da série de fibonacci até 10^19. Após fazer essa troca, a saída do programa foi exatamente como o arquivo de saída esperado.
+
+====================================================
+
+4ª Execução = código rodando perfeitamente.
+
 
