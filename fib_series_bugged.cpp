@@ -16,7 +16,7 @@ using namespace::std;
  *  @param _sz O tamanho do vetor passado como argumento.
  */
 void
-printArray( long long _A[ ], int _sz )
+printArray( unsigned long _A[ ], int _sz )
 {
     // Imprimir o vetor.
     cout << ">>> [ ";
@@ -37,23 +37,21 @@ printArray( long long _A[ ], int _sz )
  *  @return Number of elements in the Fibonacci series (size of _A)
  */
 int
-fib( int _limit, long long  *&_A ) // Faltando o &, pois os valores do vetor A dentro da função, não estavam refletindo nos valores de A[] fora da função.
+fib( unsigned long _limit, unsigned long  *&_A ) // Estava faltando o &, pois os valores do vetor A dentro da função, não estavam refletindo nos valores de A[] fora da função.
 {
     int count = 0;
-    int fib0 = 1;
-    int fib1 = 0;
-    int fib2 = 0;
-    int i = 0;
+    unsigned long fib0 = 1;
+    unsigned long fib1 = 0;
+    unsigned long fib2 = 0;
 
-    _A = new long long[count];
+    //Criando Vetor
+    _A = new unsigned long[count];
 
     while ( fib2 < _limit )
     {
         fib2 = fib0 + fib1;
     
-            _A[count] = fib2;
-            //para testes
-            cout << _A[count] << " " << endl;
+        _A[count] = fib2;
 
         //cout << fib2 << " "; // imprimir na tela apenas para depurar
         //_A[count] = fib2;
@@ -65,28 +63,27 @@ fib( int _limit, long long  *&_A ) // Faltando o &, pois os valores do vetor A d
     cout << endl; // descarregar a lista.
 
     // TODO: Aqui devemos criar e preencher o vetor com a serie
-    /*_A = new int[count];
-    for (i = 0 ; i < count ; i++ ){
-        _A[i] = i;
-        //para testes
-        cout << _A[i] << " " << endl;
-    }*/
+    // Anotação: Eu preferi preencher o vetor dentro do while acima.
 
     return count-2;
 }
 
 int main () {
-    int L; // Valor limite da serie, cujo valor maximo deve ser inferior.
-    long long *A = nullptr; // Ponteiro para o vetor a ser criado dinamicamente.
+    unsigned long L; // Valor limite da serie, cujo valor maximo deve ser inferior.
+    unsigned long *A = nullptr; // Ponteiro para o vetor a ser criado dinamicamente.
 
     cout << ">>> Indique o limite para a serie de Fibonacci (n > 0): ";
     cin >> L; // Ler valor do terminal.
 
     if ( L >= 0 ) {
         auto sz = fib( L, A ); // Gerar a Fibonacci em vetor.
-        cout << ">>> The Fibonacci series up to " << L << "is: \n";
-        cout << "size: " << sz << endl;
+        cout << ">>> The Fibonacci series up to " << L << " is: \n";
         printArray( A, sz ); // Imprimir vetor na saida padrao.
     }
     else cout << ">>> Sorry, only positive integers accepted. Aborting...\n";
+
+    //DELETANDO VETOR ALOCADO
+    delete A;
+
+    cout << ">>> Normal Exiting..." << endl;
 }
