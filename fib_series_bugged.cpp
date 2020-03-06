@@ -15,15 +15,15 @@ using namespace::std;
  *  @param _A O vetor a ser impresso na saida padrao.
  *  @param _sz O tamanho do vetor passado como argumento.
  */
-/*void
-printArray( int _A[ ], int _sz )
+void
+printArray( long long _A[ ], int _sz )
 {
     // Imprimir o vetor.
     cout << ">>> [ ";
     for ( int i(0) ; i <= _sz ; ++i )
         cout << _A[ i ] << " ";
     cout << "]\n";
-}/*
+}
 
 //-------------------------------------------------------------------------------
 //! Gera a sequencia de Fibonacci em um vetor ate um limite informado.
@@ -37,15 +37,15 @@ printArray( int _A[ ], int _sz )
  *  @return Number of elements in the Fibonacci series (size of _A)
  */
 int
-fib( int _limit, int  * _A )
+fib( int _limit, long long  *&_A ) // Faltando o &, pois os valores do vetor A dentro da função, não estavam refletindo nos valores de A[] fora da função.
 {
     int count = 0;
     int fib0 = 1;
-    int fib1 = 1;
+    int fib1 = 0;
     int fib2 = 0;
     int i = 0;
 
-    _A = new int[count];
+    _A = new long long[count];
 
     while ( fib2 < _limit )
     {
@@ -72,12 +72,12 @@ fib( int _limit, int  * _A )
         cout << _A[i] << " " << endl;
     }*/
 
-    return count;
+    return count-2;
 }
 
 int main () {
     int L; // Valor limite da serie, cujo valor maximo deve ser inferior.
-    int *A = nullptr; // Ponteiro para o vetor a ser criado dinamicamente.
+    long long *A = nullptr; // Ponteiro para o vetor a ser criado dinamicamente.
 
     cout << ">>> Indique o limite para a serie de Fibonacci (n > 0): ";
     cin >> L; // Ler valor do terminal.
@@ -85,10 +85,8 @@ int main () {
     if ( L >= 0 ) {
         auto sz = fib( L, A ); // Gerar a Fibonacci em vetor.
         cout << ">>> The Fibonacci series up to " << L << "is: \n";
-        //printArray( A, sz ); // Imprimir vetor na saida padrao.
-        //TESTANDO
-
-        cout << "teste A[1]: " << &A[1] << endl;
+        cout << "size: " << sz << endl;
+        printArray( A, sz ); // Imprimir vetor na saida padrao.
     }
     else cout << ">>> Sorry, only positive integers accepted. Aborting...\n";
 }
