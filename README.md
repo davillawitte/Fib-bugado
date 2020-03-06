@@ -9,6 +9,7 @@ usando o gdb: g++ -std=c++11 -g fib_series_bugged.cpp  -o fib
 ====== 1ª ALTERAÇÃO=====
 
 Nas linhas 43 e 44 os valores das variaveis eram 0, por isso ocorria um looping de 0 na saida do programa. Então, foi atribuido o valor 1 para a variável 'fib0'.
+
 ========================================================================
 
 2° execução = a saída não obedece o limite da serie.
@@ -25,6 +26,9 @@ Muito provavelmente, os valores do vetor _A não está sendo passados adequadame
 ======= 2ª ALTERAÇÃO =======
 
 Na linha 42 faltando o &, pois os valores do vetor A dentro da função, não estavam refletindo nos valores de A[] fora da função. Por isso o erro de segmentation fault anteriormente.
+
+Foi alterada a variavel count para que ela retornasse corretamente a serie até o seu menor numero antes ou igual ao limite.
+
 =======================================================================
 
 3º execução = 
