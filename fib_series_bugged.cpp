@@ -15,7 +15,7 @@ using namespace::std;
  *  @param _A O vetor a ser impresso na saida padrao.
  *  @param _sz O tamanho do vetor passado como argumento.
  */
-void
+/*void
 printArray( int _A[ ], int _sz )
 {
     // Imprimir o vetor.
@@ -23,7 +23,7 @@ printArray( int _A[ ], int _sz )
     for ( int i(0) ; i <= _sz ; ++i )
         cout << _A[ i ] << " ";
     cout << "]\n";
-}
+}/*
 
 //-------------------------------------------------------------------------------
 //! Gera a sequencia de Fibonacci em um vetor ate um limite informado.
@@ -40,22 +40,38 @@ int
 fib( int _limit, int  * _A )
 {
     int count = 0;
-    int fib0 = 0;
+    int fib0 = 1;
     int fib1 = 1;
     int fib2 = 0;
+    int i = 0;
+
+    _A = new int[count];
+
     while ( fib2 < _limit )
     {
         fib2 = fib0 + fib1;
-        cout << fib2 << " "; // imprimir na tela apenas para depurar
+    
+            _A[count] = fib2;
+            //para testes
+            cout << _A[count] << " " << endl;
+
+        //cout << fib2 << " "; // imprimir na tela apenas para depurar
+        //_A[count] = fib2;
         count++; // usado para determinar o comprimento da serie.
         fib0 = fib1;
         fib1 = fib2;
+        
     }
-    cout << "mostrando contador para conferir : " << count << endl; // descarregar a lista.
+    cout << endl; // descarregar a lista.
 
     // TODO: Aqui devemos criar e preencher o vetor com a serie
-    //
-    
+    /*_A = new int[count];
+    for (i = 0 ; i < count ; i++ ){
+        _A[i] = i;
+        //para testes
+        cout << _A[i] << " " << endl;
+    }*/
+
     return count;
 }
 
@@ -69,7 +85,10 @@ int main () {
     if ( L >= 0 ) {
         auto sz = fib( L, A ); // Gerar a Fibonacci em vetor.
         cout << ">>> The Fibonacci series up to " << L << "is: \n";
-        printArray( A, sz ); // Imprimir vetor na saida padrao.
+        //printArray( A, sz ); // Imprimir vetor na saida padrao.
+        //TESTANDO
+
+        cout << "teste A[1]: " << &A[1] << endl;
     }
     else cout << ">>> Sorry, only positive integers accepted. Aborting...\n";
 }
